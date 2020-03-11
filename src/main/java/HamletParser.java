@@ -1,6 +1,10 @@
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * Created by thook on 10/7/15.
@@ -8,6 +12,29 @@ import java.util.Scanner;
 public class HamletParser {
 
     private String hamletData;
+    String Horatio = "Horatio";
+    String Hamlet = "Hamlet";
+    String Leon = "Leon";
+    String Tariq = "Tariq";
+
+    public String ChangeHamletToLeon(){
+        String answer;
+        Pattern pattern = Pattern.compile(Hamlet);
+        Matcher matcher = pattern.matcher(hamletData);
+        answer = matcher.replaceAll(Leon);
+
+
+        Pattern pattern1 = Pattern.compile("HALMET");
+        Matcher matcher1 = pattern1.matcher(answer);
+        answer = matcher1.replaceAll(Leon);
+
+
+        hamletData = answer;
+
+
+        return answer;
+    }
+
 
     public HamletParser(){
         this.hamletData = loadFile();
@@ -35,5 +62,6 @@ public class HamletParser {
     public String getHamletData(){
         return hamletData;
     }
+
 
 }

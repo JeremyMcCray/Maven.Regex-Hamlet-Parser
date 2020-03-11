@@ -1,3 +1,4 @@
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +16,16 @@ public class HamletParserTest {
 
     @Test
     public void testChangeHamletToLeon() {
-    }
+       String answer = hamletParser.ChangeHamletToLeon();
+        System.out.println(answer);
+       String[] splitText = answer.split(" ");
+        for (int i = 0; i <splitText.length ; i++) {
+            Assert.assertFalse(splitText[i].equals("Hamlet") || splitText[i].equals("hamlet"));
+
+
+            }
+        }
+
 
     @Test
     public void testChangeHoratioToTariq() {
