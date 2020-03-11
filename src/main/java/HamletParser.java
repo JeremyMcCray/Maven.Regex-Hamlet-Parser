@@ -1,6 +1,7 @@
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Hashtable;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Matcher;
@@ -17,22 +18,51 @@ public class HamletParser {
     String Leon = "Leon";
     String Tariq = "Tariq";
 
-    public String ChangeHamletToLeon(){
-        String answer;
-        Pattern pattern = Pattern.compile(Hamlet);
+
+    public String ChangeHoratioToTariq(){
+        String regexWord = "Horatio";
+        String replaceWord = "Tariq";
+
+        Pattern pattern = Pattern.compile(regexWord);
         Matcher matcher = pattern.matcher(hamletData);
-        answer = matcher.replaceAll(Leon);
+        String answer = matcher.replaceAll(replaceWord);
 
 
-        Pattern pattern1 = Pattern.compile("HALMET");
-        Matcher matcher1 = pattern1.matcher(answer);
-        answer = matcher1.replaceAll(Leon);
 
-
+        regexWord = "HORATIO";
+        replaceWord = "TARIQ";
+        pattern = Pattern.compile(regexWord);
+        matcher = pattern.matcher(answer);
+        answer = matcher.replaceAll(replaceWord);
         hamletData = answer;
 
 
-        return answer;
+        return hamletData;
+    }
+    public String ChangeHamletToLeon(){
+        String regexWord = "Hamlet";
+        String replaceWord = "Leon";
+
+        Pattern pattern = Pattern.compile(regexWord);
+        Matcher matcher = pattern.matcher(hamletData);
+        String answer = matcher.replaceAll(replaceWord);
+
+
+
+        regexWord = "HAMLET";
+        replaceWord = "LEON";
+        pattern = Pattern.compile(regexWord);
+        matcher = pattern.matcher(answer);
+        answer = matcher.replaceAll(replaceWord);
+        hamletData = answer;
+
+
+        return hamletData;
+    }
+    public String changeBoth(){
+        ChangeHamletToLeon();
+        ChangeHoratioToTariq();
+        return hamletData;
     }
 
 
